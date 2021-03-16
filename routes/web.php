@@ -23,3 +23,4 @@ Route::get('/home', [
 Route::post('/store', [
     StudentController::class, 'store'
 ]);
+
