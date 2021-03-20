@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
    
 // });
-Route::get('/home', [
+Route::get('/', [
     StudentController::class, 'index'
 ]);
 Route::post('/store', [

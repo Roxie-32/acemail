@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Email Verification</title>
 </head>
 <body>
     <div class="content">
@@ -12,12 +12,23 @@
             <h2>Welcome,</h2>
             <img src="{{url('/img/logo.png')}}" width="70px" alt="">
         </div>
+       
+    
         
         <form method="post" action="/store">
             @csrf
+            @if ($errors->any())
+            <div class="alert">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
             <div >
                 <span class="input-group-addon"><i class="glyphicon glyphicon-asterisk"></i></span>
-                <input id="login-matric" class="matric" type="text" class="form-control input-lg" name="matric_no"
+                <input id="login-matric" class="matric" type="text" class="form-control input-lg" name="matric_number"
                     placeholder="Enter your Matric Number">
             </div>
     
@@ -26,6 +37,7 @@
                     <button class="btn">Submit</button>
                 </div>
             </div>
+            
         </form>
     </div>
 
@@ -66,7 +78,7 @@
         
 
         .matric{
-            width: 90%;
+            width: 85%;
             padding: 13px 10px;
         }
 
@@ -89,13 +101,33 @@
         .btn:focus{
             outline: none;
         }
+        .alert{
+            background-color: rgb(223, 81, 81);
+            color: white;
+            font-size: 10px;
+            width: 85%;
+            padding-top: 1px;
+            padding-bottom: 1px;
+            margin: 6px;
+            border-radius: 3px;
+            
+           
+        }
+        .alert li{
+            list-style: none;
+        }
 
         @media only screen and (max-width: 600px) {
             .content {
-                width: 98%;
+                    margin-top: 50px;
+                    width: 98%;
+                }
             }
             body{
                 width: 96%;
+            }
+            .alert{
+                font-size: 10px;
             }
         }
 
